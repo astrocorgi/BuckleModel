@@ -1,0 +1,39 @@
+def ratio(h,l):
+    return 6*(l/(2*math.pi*h))^3 #where h=debris thickness and l=arclength
+
+
+import matplotlib.pyplot as plt
+import math
+import pylab
+
+#define grid
+xx,yy=pylab.meshgrid(
+    pylab.linspace(1,10,100),   #debris layer thickness, h
+    pylab.linspace(1,1000,100)) #arclength, l
+
+# indexing of xx and yy (with the default value for the
+# 'indexing' parameter of meshgrid(..) ) is as follows:
+#
+#   first index  (row index)    is y coordinate index
+#   second index (column index) is x coordinate index
+#
+# as required by pcolor(..)
+
+#fill matrix with visc ratio values
+zz = pylab.zeros(xx.shape)
+for i in range(xx.shape[0]):
+    for j in range(xx.shape[1]):
+        zz[i,j] = ratio(xx[i,j],yy[i,j])
+
+pylab.pcolor(xx,yy,zz)
+pylab.colorbar()
+
+        
+#plt.axis([1,10,1,1000])
+
+pylab.xlabel('Overburden Thickness (m)',fontsize=16,fontweight='bold')
+pylab.ylabel('Ridge Arclength (m)',fontsize=16,fontweight='bold')
+
+pylab.show()
+
+
