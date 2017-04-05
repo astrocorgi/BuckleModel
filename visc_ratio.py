@@ -18,7 +18,7 @@ ymax = 1000
 #define grid
 xx,yy=pylab.meshgrid(
     pylab.linspace(xmin,xmax,100),   #debris layer thickness, h
-    pylab.linspace(ymin,ymax,10000))   #arclength, l
+    pylab.linspace(ymin,ymax,300))   #arclength, l
 
 # indexing of xx and yy (with the default value for the
 # 'indexing' parameter of meshgrid(..) ) is as follows:
@@ -71,7 +71,7 @@ ax.text(1.05,60,'Eastern Hellas',fontsize=15,fontweight='bold',color='magenta')
 
 
 
-#pylab.show()
+pylab.show()
 pylab.savefig('buckle_results.eps')
 pylab.savefig('buckle_results.png')
 
